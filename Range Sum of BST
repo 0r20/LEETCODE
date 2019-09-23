@@ -1,0 +1,30 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    
+    void check(TreeNode* rootx, int& sx,int Lx, int Rx)
+    {
+        if( rootx -> val >= Lx && rootx -> val <= Rx)
+            sx = sx + rootx -> val;
+        
+        if(rootx -> left != NULL)
+            check(rootx -> left, sx, Lx, Rx);
+        
+        if(rootx -> right != NULL)
+            check(rootx -> right, sx, Lx, Rx);
+    }
+    
+    int rangeSumBST(TreeNode* root, int L, int R) {
+        int s =0;
+        check(root, s, L, R);
+        return s;
+    }
+};
