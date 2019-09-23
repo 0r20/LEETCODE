@@ -1,0 +1,41 @@
+class Solution {
+public:
+    vector<int> selfDividingNumbers(int left, int right) {
+        
+        int p;
+        bool fl;
+        vector<int> puk;
+        for(int i=left;i<=right;i++)
+        {
+            p=i;
+            fl = true;
+            if (p%10 == 0)
+            {
+                fl = false;
+            }
+            else
+            {
+                while(p>1)
+                {
+                    if (p%10 == 0)
+                    {
+                        fl = false;
+                    }
+                    else
+                    {
+                        if (i%(p%10) != 0)
+                        {
+                            fl = false;                    
+                        }
+                    }
+                    p=p/10;
+                }
+            }
+            if (fl == true)
+            {
+                puk.push_back(i);
+            }
+        }
+        return puk;
+    }
+};
