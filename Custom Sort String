@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string customSortString(string S, string T) {
+        
+        int hashTable[26] = {0};
+        
+        for (int i = 0; i < T.size(); i++) hashTable[(int)T[i]-97]++;
+        string temp = "";
+        
+        for (int i = 0; i < S.size(); i++) 
+            while (hashTable[(int)S[i]-97]) {
+                temp += S[i];
+                hashTable[(int)S[i]-97]--;
+            }
+        
+        for (int i = 0; i < 26; i++) { 
+            while (hashTable[i]--) 
+                 temp += (char)(i+97);
+            
+        } 
+        return temp;
+    }
+};
