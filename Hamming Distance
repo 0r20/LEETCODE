@@ -1,0 +1,51 @@
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+    int ost;
+	string xs = "";
+	string ys = "";
+
+	while (x > 1)
+	{
+		xs = xs + to_string(x % 2);
+		x = x / 2;
+	}
+
+	xs = xs + to_string(x);
+	while (y > 1)
+	{
+		ost = y % 2;
+		ys = ys + to_string(ost);
+		y = y / 2;
+		//cout << ost << " " << ys << " " << y << endl;
+	}
+	ys = ys + to_string(y);
+
+
+	int length = max(xs.length(), ys.length());
+	int length2 = min(xs.length(), ys.length());
+
+	for (int i = 0; i < length - length2; i++)
+	{
+		if (xs.length() < ys.length())
+		{
+			xs = xs + "0";
+		}
+		else
+		{
+			ys = ys + "0";
+		}
+	}
+
+	int p = 0;
+	for (int i = 0; i < length; i++)
+	{
+		if (xs[i] != ys[i])
+		{
+			p++;
+		}
+	}
+
+	return p;
+    }
+};
