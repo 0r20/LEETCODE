@@ -1,0 +1,154 @@
+string plas(string n1, string n2)
+{
+	string l, s, o = "";
+	int n, nmax, p = 0, sx, lx;
+	n = min(n1.length(), n2.length());
+	nmax = max(n1.length(), n2.length());
+
+	if (n1.length() > n2.length())
+	{
+		l = n1;
+		s = n2;
+	}
+	else
+	{
+		l = n2;
+		s = n1;
+	}
+
+	for (int i = 0; i < nmax - n; i++)
+	{
+		s = "0" + s;
+	}
+
+	for (int i = nmax - 1; i >= 0; i--)
+	{
+		sx = (int)s[i] - 48;
+		lx = (int)l[i] - 48;
+		sx = sx + p;
+		p = lx + sx;
+		o = to_string(p % 10) + o;
+		p = p / 10;
+	}
+
+	if (p != 0)
+	{
+		o = to_string(p) + o;
+	}
+	return o;
+}
+
+string amnam(string n1, char n2)
+{
+	string l, s, o = "";
+	int n, nmax, p = 0, sx, lx;
+	nmax = n1.length();
+	l = n1; 
+	sx = (int)n2 - 48;
+
+	for (int i = nmax - 1; i >= 0; i--)
+	{
+		lx = (int)l[i] - 48;
+		p = lx * sx + p;
+		o = to_string(p % 10) + o;
+		p = p / 10;
+	}
+
+	if (p != 0)
+	{
+		o = to_string(p) + o;
+	}
+	return o;
+}
+
+
+string ymn(string n1, string n2)
+{
+	string l, s, o = "";
+	int i, n, nmax, p = 0, sx, lx;
+	int kol1 = 0, kol2 = 0;
+	bool fl = false;
+
+	for (i = n1.length()-1; i >=0; i--)
+	{
+		if (n1[i] == '0')
+		{
+			kol1++;
+			fl = true;
+		}
+		else
+		{
+			break;
+		}
+	}
+	if (fl == true)
+	{
+		n1.erase(n1.length()-kol1, kol1);
+	}
+
+	fl = false;
+	for (i = n2.length() - 1; i >= 0; i--)
+	{
+		if (n2[i] == '0')
+		{
+			kol2++;
+			fl = true;
+		}
+		else
+		{
+			break;
+		}
+	}
+	if (fl == true)
+	{
+		n2.erase(n2.length() - kol2, kol2);
+	}
+	kol1 += kol2; // кол-во нулей
+
+	n = min(n1.length(), n2.length());
+	nmax = max(n1.length(), n2.length());
+
+	if (n1.length() > n2.length())
+	{
+		l = n1;
+		s = n2;
+	}
+	else
+	{
+		l = n2;
+		s = n1;
+	}
+
+	string jopa1="", jopa="0";
+	for (i = n - 1; i >= 0; i--)
+	{
+		jopa1 = amnam(l, s[i]);
+		for (int j = 0; j < n-i-1; j++)
+		{
+			jopa1 = jopa1 + "0";
+		}
+		jopa = plas(jopa, jopa1);
+	}
+
+	for (i = 0; i < kol1; i++)
+	{
+		jopa = jopa + "0";
+	}
+
+
+	return jopa;
+}
+
+class Solution {
+public:
+    string multiply(string num1, string num2) {
+        if (num1=="0" || num2=="0")
+        {
+            return "0";
+        }
+        else
+        {
+           return ymn(num1, num2); 
+        }
+    }
+};
