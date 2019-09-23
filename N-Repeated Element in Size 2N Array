@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int repeatedNTimes(vector<int>& A) {
+        int B[10001] {0};
+        int i,p;
+        for(i=0;i< A.size();i++)
+        {
+            B[A[i]]++;
+            if(B[A[i]] == A.size()/2)
+            {
+                p=A[i];
+                break;
+            }
+                
+        }
+        return p;
+        
+    }
+};
