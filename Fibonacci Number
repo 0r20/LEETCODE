@@ -1,0 +1,13 @@
+int fac(int i)
+{
+	if (i <= 1) return 1;
+	return fac(i - 1) * i;
+}
+
+class Solution {
+public:
+    int fib(int N) {
+        return fac(N);
+    }
+};
+
