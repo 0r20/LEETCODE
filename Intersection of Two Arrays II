@@ -1,0 +1,32 @@
+class Solution {
+public:
+	vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+		vector<int> answer, blacklist;
+		int j, i, k;
+		bool fl2;
+		for (i = 0; i < nums1.size(); i++)
+		{
+			for (j = 0; j < nums2.size(); j++)
+			{
+				if (nums1[i] == nums2[j])
+				{
+
+					fl2 = true;
+					for (k = 0; k < blacklist.size(); k++)
+						if (j == blacklist[k])
+						{
+							fl2 = false;
+						}
+					if (fl2)
+					{
+						answer.push_back(nums1[i]);
+						blacklist.push_back(j);
+						break;
+					}
+				}
+
+			}
+		}
+		return answer;
+	}
+};
