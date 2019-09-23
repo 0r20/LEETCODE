@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
+        
+        int hashTable[1010] = {0};
+        
+        for (int i = 0; i < arr1.size(); i++) hashTable[arr1[i]]++;
+        vector<int> temp;
+        
+        for (int i = 0; i < arr2.size(); i++) 
+            while (hashTable[arr2[i]]) {
+                temp.push_back(arr2[i]);
+                hashTable[arr2[i]]--;
+            }
+        
+        for (int i = 0; i <= 1000; i++) { 
+            while (hashTable[i]--) 
+                temp.push_back(i);
+        } 
+        return temp;
+    }
+};
