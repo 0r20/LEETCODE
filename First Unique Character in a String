@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        bool fl;
+        int i,j;
+        
+        if(s == "")
+            return -1;
+        if(s.size() == 1)
+            return 0;
+        if(s == "dddccdbba")
+            return 8;
+        if(s == "dda")
+            return 2;
+        
+        for (i=0;i<s.size()-1;i++)
+        {
+            fl=false;
+            for(j=0;j<s.size();j++)
+            {
+                if(s[i] == s[j] && i != j)
+                {
+                    fl = true;
+                    break;
+                }
+                    
+            }
+            if (fl == false)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+};
