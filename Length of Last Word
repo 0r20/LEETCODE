@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+       int lenS=s.length()-1;
+        while (lenS>=0 && s[lenS]==' '){
+            lenS-=1;
+        }
+        int rep=0;
+        while(lenS>=0){
+            if(s[lenS]!=' '){
+                rep+=1;
+            }
+            else{
+                break;
+            }
+            lenS--;
+        }
+        return rep;
+    }
+};
