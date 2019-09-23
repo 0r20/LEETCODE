@@ -1,0 +1,34 @@
+class Solution {
+public:
+    int uniqueMorseRepresentations(vector<string>& words) {
+        string ch[26]{ ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.." };
+        
+        vector<string> world;
+        string p;
+        
+        if (words.size() == 0)
+            return 0; 
+            
+        for(int i=0;i<words.size();i++)
+        {
+            p = "";
+            for(int j=0;j<words[i].size();j++)
+            {
+                p = p + ch[words[i][j] - 'a'];
+            }
+            world.push_back(p);    
+        }
+        
+        bool fl;
+        int k=1;
+        
+        sort(world.begin(), world.end());
+        
+        for (int i=0;i< world.size()-1;i++)
+        {
+            if (world[i] != world[i+1])
+                k++;
+        }
+        return k;
+    }
+};
