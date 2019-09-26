@@ -1,0 +1,32 @@
+class Solution {
+public:
+	int maxNumberOfBalloons(string text) {
+		vector<int> kol(5);
+		for (int i = 0; i < text.size(); i++) {
+			if (text[i] == 'b') {
+				kol[0] += 1;
+			}
+			if (text[i] == 'a') {
+				kol[1] += 1;
+			}
+			if (text[i] == 'l') {
+				kol[2] += 1;
+			}
+			if (text[i] == 'o') {
+				kol[3] += 1;
+			}
+			if (text[i] == 'n') {
+				kol[4] += 1;
+			}
+		}
+		kol[2] = kol[2] / 2;
+		kol[3] = kol[3] / 2;
+		int min = kol[0];
+		for (int i = 1; i < kol.size(); i++) {
+			if (min > kol[i]) {
+				min = kol[i];
+			}
+		}
+		return min;
+	}
+};
