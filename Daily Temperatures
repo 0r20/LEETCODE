@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<int> dailyTemperatures(vector<int>& T) {
+        vector<int> result(T.size(), 0);
+        vector<int> position(T.size(), 0);
+        position.back() = T.size() - 1;
+        if (T.size() <= 1) {
+            return result;
+        }
+        for (int i = T.size() - 2; i >= 0; --i) {
+            if (T[i + 1] > T[i]) {
+                result[i] = 1;
+                position[i] = i + 1;
+                continue ;
+            }
+            int pos = i + 1;
+            while (T[pos] <= T[i] && result[pos] != 0)
+                pos = position[pos];
+            if (T[pos] <= T[i] && result[pos] == 0) {
+                result[i] = 0;
+                position[i] = T.size() - 1;
+                continue;
+            }
+            assert(T[pos] > T[i]);
+            result[i] = pos - i;
+            position[i] = pos;
+        }
+        return result;
+    }
+};
