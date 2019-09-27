@@ -1,3 +1,4 @@
+//https://leetcode.com/problems/powx-n/
 double rec(double x, double n)
 {
     if (n==0)
