@@ -1,0 +1,24 @@
+//https://leetcode.com/problems/binary-tree-right-side-view/
+
+void treeprint(TreeNode* root, vector<int> &res, int k){
+    if(root!=NULL){
+        if(res.size()==k){
+            res.push_back(root->val);
+        }
+        treeprint(root->right, res, k+1);
+        treeprint(root->left, res, k+1);
+    }
+}
+
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> res;
+        if(root == NULL){
+            return res;
+        }
+        treeprint(root, res, 0); 
+        return res;
+    }
+    
+};
