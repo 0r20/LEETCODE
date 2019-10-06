@@ -1,0 +1,14 @@
+//https://leetcode.com/problems/distribute-candies/
+class Solution {
+public:
+    int distributeCandies(vector<int>& candies) {
+        
+        map <int, int> map;
+        
+        for(int i=0;i<candies.size();i++)
+            map[candies[i]]++;
+        
+        return min(map.size(), candies.size()/2);
+        
+    }
+};
