@@ -1,0 +1,92 @@
+//https://leetcode.com/problems/available-captures-for-rook/
+class Solution {
+public:
+    int numRookCaptures(vector<vector<char>>& board) {
+        
+        int ot=0, i, j;
+        bool fl = true;
+        int m=0;
+        while(m<board.size() && fl)
+        {
+            int n=0;
+            while(n<board.size() && fl)
+            {
+                if (board[m][n] == 'R')
+                {
+                    fl= false;
+                    i = m;
+                    j = n;
+                }
+                n++;
+            }
+            m++;
+        }
+        
+        
+        if (j+1 < board.size())
+        {
+            for(int k=j+1;k<board.size();k++)
+            {
+                if(board[i][k] == 'B')
+                    break;
+                
+                if(board[i][k] == 'p')
+                {
+                    ot++;
+                    break;
+                }
+            }
+        }
+        
+        if (i+1 < board.size())
+        {
+            for(int k=i+1;k<board.size();k++)
+            {
+                if(board[k][j] == 'B')
+                    break;
+                
+                if(board[k][j] == 'p')
+                {
+                    ot++;
+                    break;
+                }
+            }
+        }
+        
+        if (j-1 >= 0)
+        {
+            for(int k=j-1;k>=0;k--)
+            {
+                if(board[i][k] == 'B')
+                    break;
+                
+                if(board[i][k] == 'p')
+                {
+                    ot++;
+                    break;
+                }
+            }
+        }
+        
+        if (i-1 >= 0)
+        {
+            for(int k=i-1;k>=0;k--)
+            {
+                if(board[k][j] == 'B')
+                    break;
+                
+                if(board[k][j] == 'p')
+                {
+                    ot++;
+                    break;
+                }
+            }
+        }
+        
+        return ot;
+        
+        
+        
+        
+    }
+};
