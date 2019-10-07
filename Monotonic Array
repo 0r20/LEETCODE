@@ -1,0 +1,31 @@
+//https://leetcode.com/problems/monotonic-array/
+class Solution {
+public:
+    bool isMonotonic(vector<int>& A) {
+     
+        
+        bool fl = true, fl1 = true;
+        
+        int i=0;
+        
+        while (i<A.size()-1 && fl)
+        {
+            if(A[i] < A[i+1] )
+                fl = false;
+            i++;
+        }
+        
+        i = 0;
+        
+        while (i<A.size()-1 && fl1)
+        {
+            if(A[i] > A[i+1] )
+                fl1 = false;
+            i++;
+        }
+        
+        return fl || fl1;
+        
+        
+    }
+};
