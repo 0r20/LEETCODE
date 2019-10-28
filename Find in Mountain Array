@@ -1,0 +1,26 @@
+https://leetcode.com/problems/find-in-mountain-array/
+/**
+ * // This is the MountainArray's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * class MountainArray {
+ *   public:
+ *     int get(int index);
+ *     int length();
+ * };
+ */
+class Solution {
+public:
+    int flagist(MountainArray harcho, int target)
+    {
+        for(int i=0;i<harcho.length();i++)
+        {
+            if(harcho.get(i)==target)
+                return i;
+        }
+        return -1;
+    }
+    
+    int findInMountainArray(int target, MountainArray &gopa) {
+          return flagist(gopa, target);
+    }
+};
