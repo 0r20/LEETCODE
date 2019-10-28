@@ -1,0 +1,21 @@
+https://leetcode.com/problems/climbing-stairs/submissions/
+class Solution {
+public:
+    int climbStairs(int n) {
+         
+        int mas[n+1];
+        mas[1] = 1; 
+        
+        if(n > 1)
+            mas[2] = 2;
+        
+        if(n <=2)
+            return mas[n];
+        
+        for(int i = 3; i <=n ; i++){
+            mas[i] = mas[i-1] + mas[i-2];
+        }
+        
+        return mas[n];
+    }
+};
