@@ -1,0 +1,41 @@
+https://leetcode.com/problems/valid-mountain-array/
+class Solution {
+public:
+	bool validMountainArray(vector<int>& nums) {
+		if (nums.size() < 3) {
+			return false;
+		}
+		for (int i = 0; i < nums.size() - 1; i++) {
+			if (nums[i] == nums[i + 1]) {
+				return false;
+			}
+		}
+		if (nums[0] > nums[1] || nums[nums.size() - 1] > nums[nums.size() - 2]) {
+			return false;
+		}
+		int z = 0;
+		bool fl = true;
+		int i = 0;
+		while (i < nums.size() - 1 && fl) {
+
+			if (nums[i] > nums[i + 1]) {
+				fl = false;
+			}
+			if (fl)
+				i++;
+		}
+		if (!fl && i < nums.size() - 1) {
+			fl = true;
+			while (i < nums.size() - 1 && fl) {
+				if (nums[i] < nums[i + 1]) {
+					fl = false;
+				}
+				i++;
+			}
+		}
+		else {
+			return false;
+		}
+		return fl;
+	}
+};
