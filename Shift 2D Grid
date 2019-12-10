@@ -1,0 +1,24 @@
+https://leetcode.com/problems/shift-2d-grid/
+class Solution {
+public:
+      void matrixReverse(vector<vector<int>>& grid, int i, int j) {
+        int n = grid[0].size();
+        while (i < j) {
+            swap(grid[i/n][i%n], grid[j/n][j%n]);
+            i++, j--;
+        }
+    }
+    vector<vector<int>> shiftGrid(vector<vector<int>>& grid, int k) {
+        int m = grid.size(), n = grid[0].size();
+        int len = m*n;
+        k %= len;
+        if (k == 0) return grid;
+        
+        matrixReverse(grid, 0, len-k-1);
+        matrixReverse(grid, len-k, len-1);
+        matrixReverse(grid, 0, len-1);
+        return grid;
+    }
+        
+    
+};
