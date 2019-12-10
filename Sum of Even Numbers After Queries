@@ -1,0 +1,34 @@
+https://leetcode.com/problems/sum-of-even-numbers-after-queries/
+class Solution {
+public:
+    vector<int> sumEvenAfterQueries(vector<int>& A, vector<vector<int>>& queries) {
+        
+        int sum=0;
+            for(int j=0;j<A.size();j++)
+            {
+                if(A[j] % 2 == 0)
+                {
+                    sum+=A[j];
+                }
+            }
+        vector<int> vec;
+        for(int i=0;i<queries.size();i++)
+        {
+            int g = A[queries[i][1]];
+            A[queries[i][1]]+=queries[i][0];
+            
+            if((g%2==0) && (A[queries[i][1]]%2!=0))
+                sum-=g;
+            if((g%2!=0) && (A[queries[i][1]]%2==0))
+                sum+=A[queries[i][1]];
+            if((g%2==0) && (A[queries[i][1]]%2==0))
+            {
+                sum-=g;
+                sum+=A[queries[i][1]];
+            }
+            
+            vec.push_back(sum);
+        }
+        return vec;
+    }
+};
