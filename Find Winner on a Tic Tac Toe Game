@@ -1,0 +1,89 @@
+https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/
+class Solution {
+public:
+	string tictactoe(vector<vector<int>>& moves) {
+		set<vector<int>> A;
+		set<vector<int>> B;
+		for(int i=0;i<moves.size();i=i+2){
+			A.insert(moves[i]);
+		}
+		 for(int i=1;i<moves.size();i=i+2){
+			 B.insert(moves[i]);
+		 }
+		vector<int> zz{0,0};
+		vector<int> zo{0,1};
+		vector<int> zt{0,2};
+		vector<int> oz{1,0};
+		vector<int> oo{1,1};
+		vector<int> ot{1,2};
+		vector<int> tz{2,0};
+		vector<int> to{2,1};
+		vector<int> tt{2,2};
+		if(A.find(zz)!=A.end() && A.find(zo)!=A.end() && A.find(zt)!=A.end()){
+			return "A";
+		}
+		if(A.find(oz)!=A.end() && A.find(oo)!=A.end() && A.find(ot)!=A.end()){
+			return "A";
+		}
+
+		if(A.find(tz)!=A.end() && A.find(to)!=A.end() && A.find(tt)!=A.end()){
+			return "A";
+		}
+
+		if(A.find(zz)!=A.end() && A.find(oz)!=A.end() && A.find(tz)!=A.end()){
+			return "A";
+		}
+
+		if(A.find(zo)!=A.end() && A.find(oo)!=A.end() && A.find(to)!=A.end()){
+			return "A";
+		}
+
+		if(A.find(zt)!=A.end() && A.find(ot)!=A.end() && A.find(tt)!=A.end()){
+			return "A";
+		}
+		if(A.find(zz)!=A.end() && A.find(oo)!=A.end() && A.find(tt)!=A.end()){
+			return "A";
+		}
+		if(A.find(zt)!=A.end() && A.find(oo)!=A.end() && A.find(tz)!=A.end()){
+			return "A";
+		}
+
+
+
+		if(B.find(zz)!=B.end() && B.find(zo)!=B.end() && B.find(zt)!=B.end()){
+			return "B";
+		}
+	   if(B.find(oz)!=B.end() && B.find(oo)!=B.end() && B.find(ot)!=B.end()){
+			return "B";
+		}
+
+		if(B.find(tz)!=B.end() && B.find(to)!=B.end() && B.find(tt)!=B.end()){
+			return "B";
+		}
+
+		if(B.find(zz)!=B.end() && B.find(oz)!=B.end() && B.find(tz)!=B.end()){
+			return "B";
+		}
+
+		if(B.find(zo)!=B.end() && B.find(oo)!=B.end() && B.find(to)!=B.end()){
+			return "B";
+		}
+
+		if(B.find(zt)!=B.end() && B.find(ot)!=B.end() && B.find(tt)!=B.end()){
+			return "B";
+		}
+		if(B.find(zz)!=B.end() && B.find(oo)!=B.end() && B.find(tt)!=B.end()){
+			return "B";
+		}
+		if(B.find(zt)!=B.end() && B.find(oo)!=B.end() && B.find(tz)!=B.end()){
+			return "B";
+		}
+
+		if(moves.size()==9){
+			return "Draw";
+		}
+		else{
+			return "Pending";
+		}
+	}
+};
