@@ -1,0 +1,47 @@
+https://leetcode.com/problems/day-of-the-week/
+class Solution {
+inline int checkleapYear(int year){
+    if(year % 4 == 0)return 0;
+    else return 1;
+}
+public:
+    string dayOfTheWeek(int day, int month, int year) {
+        int numDays = 0;
+        for(int i = 1971; i < year; i++){
+            if(checkleapYear(i))
+                numDays += 365;
+            else 
+                numDays += 366;
+        }
+        for(int i = 1; i < month; i++){
+            
+            if(i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12)
+                numDays += 31;
+            
+            else if(i == 2){
+                if(checkleapYear(year))
+                    numDays += 28;
+                else
+                    numDays += 29;
+            }
+            else
+                numDays += 30;
+        }
+        
+        numDays += day;
+        
+        
+        numDays = numDays % 7;
+        
+        switch(numDays){
+            case 0: return "Thursday";
+            case 1: return "Friday";
+            case 2: return "Saturday";
+            case 3: return "Sunday"; 
+            case 4: return "Monday";
+            case 5: return "Tuesday";
+            case 6: return "Wednesday";
+        }
+        return "";
+    }
+};
