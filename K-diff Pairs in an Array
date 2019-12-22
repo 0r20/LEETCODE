@@ -1,0 +1,26 @@
+https://leetcode.com/problems/k-diff-pairs-in-an-array/
+class Solution {
+public:
+    int findPairs(vector<int>& nums, int k) {
+        // trival cases
+        if (k < 0) {
+            return 0;
+        }
+        map<int, int> freq;
+        for (int x : nums) {
+            if (freq.count(x)) {
+                freq[x] += 1;
+            }
+            else {
+                freq[x] = 1;
+            }
+        }
+        int rst = 0;
+        for (const auto& p : freq) {
+            if (freq.count(p.first + k)) {
+                rst += freq[p.first + k] > (k == 0 ? 1 : 0);
+            }
+        }
+        return rst;
+    }
+};
