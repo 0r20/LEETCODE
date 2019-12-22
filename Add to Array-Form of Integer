@@ -1,0 +1,17 @@
+https://leetcode.com/problems/add-to-array-form-of-integer/
+class Solution {
+public:
+    vector<int> addToArrayForm(vector<int>& v, int n) {
+        int i = 0, m, sum;
+        bool rem = false;
+        while (n || rem) {
+            if (++i > v.size()) v.emplace(begin(v), 0);
+            m = n ? n % 10 : 0;
+            n /= 10;
+            sum = v[v.size() - i] + m + rem;
+            v[v.size() - i] = sum % 10;
+            rem = sum > 9;
+        }
+        return v;
+    }
+};
